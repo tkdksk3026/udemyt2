@@ -7,11 +7,22 @@ use App\Models\Task;
 
 class TasksController extends Controller
 {
-    public function store(Request $request){
-        $task = $request->input('task');
-        $result = Task::create([
-            'task' => $task
+    public function index() {
+        $tasks = Task::all();
+        return view('tasks.index',[
+            'tasks' => $tasks
         ]);
+    }
+
+    public function store(Request $request){
+        $validated = $request->validate(Task::$rules,task::$messages);
+        $result = Task::create($validated);
         return $result->id  . '番目のタスクを追加しました';
+    }
+
+    public function edit($id) {
+        $task = Task::findOrFail($id);
+        dd($task);
+
     }
 }

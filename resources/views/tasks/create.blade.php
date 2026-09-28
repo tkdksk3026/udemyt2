@@ -71,13 +71,13 @@
                     Task Name
                 </label>
                 <div class="relative animate-shake">
-                    <input type="text" name="task" id="task-content" class="block w-full py-3 px-4 border-2 rounded-xl text-[#1a1a1a] focus:outline-none text-lg font-light" placeholder="例: デザインカンプの作成" autofocus value="">
-                    <!-- Error Message -->
-                    <!--
-                    <p class="absolute -bottom-6 left-1 text-xs text-error font-medium">
-                        タスクの内容を入力してください
+                    <input type="text" name="task" id="task-content" class="block w-full py-3 px-4 border-2 rounded-xl text-[#1a1a1a] focus:outline-none text-lg font-light" placeholder="例: デザインカンプの作成" autofocus value="{{old('task')}}">
+                    <!-- Error Message --> 
+                     @error('task')               
+                    <p class="absolute -bottom-6 left-1 text-xs text-error  text-red-500 font-medium">
+                        {{$message}}
                     </p>
-                    -->
+                    @enderror               
                 </div>
             </div>
 
@@ -88,7 +88,7 @@
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                         <i class="fa-regular fa-calendar text-gray-400"></i>
                     </div>
-                    <input type="datetime-local" id="due-date" name="deadline" class="block w-full pl-12 pr-4 py-3 bg-transparent border border-transparent rounded-xl text-gray-700 placeholder-gray-400 focus:bg-white focus:border-gray-200 focus:ring-2 focus:ring-gray-100 focus:outline-none transition-all duration-300 font-light appearance-none">
+                    <input type="datetime-local" id="due-date" name="due_date" class="block w-full pl-12 pr-4 py-3 bg-transparent border border-transparent rounded-xl text-gray-700 placeholder-gray-400 focus:bg-white focus:border-gray-200 focus:ring-2 focus:ring-gray-100 focus:outline-none transition-all duration-300 font-light appearance-none" value="{{old('due_date')}}">
                     <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
                         <i class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
                     </div>
